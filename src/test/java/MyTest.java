@@ -6,10 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 
 class MyTest {
-//	public static Card card;
-	public static DeckOfCards deck;
 	public static ThreeCardLogic logic;
-
 	public static ArrayList<Card> none;
 	public static ArrayList<Card> pair;
 	public static ArrayList<Card> str;
@@ -29,7 +26,6 @@ class MyTest {
 		//threeOfAKind = new ArrayList<Card>();
 
 		logic = new ThreeCardLogic();
-		deck = new DeckOfCards();
 	}
 	@BeforeAll
 	static void setupForNone() {

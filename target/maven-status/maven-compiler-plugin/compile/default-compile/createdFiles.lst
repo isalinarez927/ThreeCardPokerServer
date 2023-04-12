@@ -1,5 +1,4 @@
 GuiServer.class
-DeckOfCards.class
 Client.class
 Server$ClientThread.class
 ThreeCardLogic.class
