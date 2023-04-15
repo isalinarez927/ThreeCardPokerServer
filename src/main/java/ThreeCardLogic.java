@@ -148,7 +148,6 @@ public class ThreeCardLogic {
         return 0; // 0 if dealer wins
     };
 
-
     //evaluates bet for pair plus given three card hand
     public static int evalPPWinnings(ArrayList<Card>hand, int bet){
         Integer betMultiplier = 0;
@@ -157,6 +156,39 @@ public class ThreeCardLogic {
         else if(straight(hand)){betMultiplier = bet * 6;}
         else if(flush(hand)){betMultiplier = bet * 3;}
         else if(pair(hand)){betMultiplier = bet;}
+        else{ betMultiplier = bet * -1;} //
         return betMultiplier;
     };
+
+
+    //evaluates if dealer qualifies with a queen high card
+    public static boolean dealerQualify (ArrayList<Card> dealerHand)
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            // sees if the dealer has
+            if (cardRankVals.get(dealerHand.get(i)) >= 12)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+    public static int updateWinnings(Player player, ArrayList<Card> dealerHand){
+        int ante = player.anteBet;
+        int play = player.playBet;
+        int pp = player.ppBet;
+        int winnings = 0;
+        if (dealerQualify(dealerHand)){
+            // need to multiply twice to get back up to original balance + profit
+            if (compareHands(dealerHand, player.getHand()) == 1){ winnings = ante*2 + play*2; }
+            // add to get back to original balance
+            else if (compareHands(dealerHand, player.getHand()) == 3) { winnings = ante + play;}
+        }
+        else { winnings = ante * 2; }
+        return winnings + evalPPWinnings(player.hand, pp);
+    }
+
 }

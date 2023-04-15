@@ -7,6 +7,8 @@ import java.util.ArrayList;
 
 class MyTest {
 	public static ThreeCardLogic logic;
+	public static Deck deck;
+	public static Player player;
 	public static ArrayList<Card> none;
 	public static ArrayList<Card> pair;
 	public static ArrayList<Card> str;
@@ -17,15 +19,16 @@ class MyTest {
 
 
 	@BeforeAll
-	static void setUpStaticVariables(){
+	static void setUpVariables(){
 
 		pair = new ArrayList<Card>();
 		none = new ArrayList<Card>();
 		flush = new ArrayList<Card>();
 		strFlush = new ArrayList<Card>();
-		//threeOfAKind = new ArrayList<Card>();
-
 		logic = new ThreeCardLogic();
+		deck = new Deck();
+		//todo: might have to update later
+		player = new Player(1);
 	}
 	@BeforeAll
 	static void setupForNone() {
