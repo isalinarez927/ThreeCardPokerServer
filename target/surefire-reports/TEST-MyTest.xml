@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="MyTest" time="0.06" tests="44" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="MyTest" time="0.078" tests="64" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="19"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -12,7 +12,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
     <property name="sun.boot.library.path" value="/usr/local/Cellar/openjdk/19.0.1/libexec/openjdk.jdk/Contents/Home/lib"/>
-    <property name="sun.java.command" value="/Users/isabellalinarez/Desktop/ThreeCardPokerServer/target/surefire/surefirebooter16728345132877814502.jar /Users/isabellalinarez/Desktop/ThreeCardPokerServer/target/surefire 2023-04-12T18-00-12_694-jvmRun1 surefire11314019577472328693tmp surefire_017371563916143001855tmp"/>
+    <property name="sun.java.command" value="/Users/isabellalinarez/Desktop/ThreeCardPokerServer/target/surefire/surefirebooter8182335920540626697.jar /Users/isabellalinarez/Desktop/ThreeCardPokerServer/target/surefire 2023-04-15T16-22-08_666-jvmRun1 surefire1505165358543746191tmp surefire_07699375736865191852tmp"/>
     <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/Users/isabellalinarez/Desktop/ThreeCardPokerServer/target/test-classes:/Users/isabellalinarez/Desktop/ThreeCardPokerServer/target/classes:/Users/isabellalinarez/.m2/repository/org/junit/jupiter/junit-jupiter/5.6.2/junit-jupiter-5.6.2.jar:/Users/isabellalinarez/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.6.2/junit-jupiter-api-5.6.2.jar:/Users/isabellalinarez/.m2/repository/org/apiguardian/apiguardian-api/1.1.0/apiguardian-api-1.1.0.jar:/Users/isabellalinarez/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/Users/isabellalinarez/.m2/repository/org/junit/platform/junit-platform-commons/1.6.2/junit-platform-commons-1.6.2.jar:/Users/isabellalinarez/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.6.2/junit-jupiter-params-5.6.2.jar:/Users/isabellalinarez/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.6.2/junit-jupiter-engine-5.6.2.jar:/Users/isabellalinarez/.m2/repository/org/junit/platform/junit-platform-engine/1.6.2/junit-platform-engine-1.6.2.jar:/Users/isabellalinarez/.m2/repository/org/openjfx/javafx-controls/12.0.1/javafx-controls-12.0.1.jar:/Users/isabellalinarez/.m2/repository/org/openjfx/javafx-controls/12.0.1/javafx-controls-12.0.1-mac.jar:/Users/isabellalinarez/.m2/repository/org/openjfx/javafx-graphics/12.0.1/javafx-graphics-12.0.1.jar:/Users/isabellalinarez/.m2/repository/org/openjfx/javafx-graphics/12.0.1/javafx-graphics-12.0.1-mac.jar:/Users/isabellalinarez/.m2/repository/org/openjfx/javafx-base/12.0.1/javafx-base-12.0.1.jar:/Users/isabellalinarez/.m2/repository/org/openjfx/javafx-base/12.0.1/javafx-base-12.0.1-mac.jar:/Users/isabellalinarez/.m2/repository/org/openjfx/javafx-fxml/12/javafx-fxml-12.jar:/Users/isabellalinarez/.m2/repository/org/openjfx/javafx-fxml/12/javafx-fxml-12-mac.jar:"/>
@@ -29,7 +29,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="apple.awt.application.name" value="ForkedBooter"/>
-    <property name="surefire.real.class.path" value="/Users/isabellalinarez/Desktop/ThreeCardPokerServer/target/surefire/surefirebooter16728345132877814502.jar"/>
+    <property name="surefire.real.class.path" value="/Users/isabellalinarez/Desktop/ThreeCardPokerServer/target/surefire/surefirebooter8182335920540626697.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.runtime.version" value="19.0.1"/>
@@ -58,7 +58,8 @@
     <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.class.version" value="63.0"/>
   </properties>
-  <testcase name="testEvalPPWinningsWithFlush" classname="MyTest" time="0.014"/>
+  <testcase name="testSetAndGetPlayBet" classname="MyTest" time="0.012"/>
+  <testcase name="testEvalPPWinningsWithFlush" classname="MyTest" time="0"/>
   <testcase name="testGetNonPairValue1" classname="MyTest" time="0.001"/>
   <testcase name="testGetNonPairValue2" classname="MyTest" time="0.001"/>
   <testcase name="testEvalPPWinningsWithThreeOfAKind" classname="MyTest" time="0.001"/>
@@ -66,40 +67,59 @@
   <testcase name="threeOfAKindTest2" classname="MyTest" time="0"/>
   <testcase name="threeOfAKindTest3" classname="MyTest" time="0.001"/>
   <testcase name="pairTest1" classname="MyTest" time="0"/>
-  <testcase name="pairTest2" classname="MyTest" time="0"/>
+  <testcase name="pairTest2" classname="MyTest" time="0.001"/>
   <testcase name="pairTest3" classname="MyTest" time="0.001"/>
   <testcase name="pairTest4" classname="MyTest" time="0"/>
+  <testcase name="testDraw1" classname="MyTest" time="0.001"/>
+  <testcase name="testDraw2" classname="MyTest" time="0.001"/>
   <testcase name="testCompareHands_PairDraw" classname="MyTest" time="0.001"/>
+  <testcase name="testSetAndGetHand" classname="MyTest" time="0"/>
   <testcase name="testCompareHands_PlayerNonPairWin" classname="MyTest" time="0.001"/>
+  <testcase name="testConstructorAndGetters" classname="MyTest" time="0.001"/>
   <testcase name="flushTest1" classname="MyTest" time="0.001"/>
   <testcase name="flushTest2" classname="MyTest" time="0.001"/>
   <testcase name="flushTest3" classname="MyTest" time="0"/>
   <testcase name="flushTest4" classname="MyTest" time="0"/>
-  <testcase name="flushTest5" classname="MyTest" time="0"/>
+  <testcase name="flushTest5" classname="MyTest" time="0.001"/>
   <testcase name="straightFlushTest1" classname="MyTest" time="0"/>
-  <testcase name="straightFlushTest2" classname="MyTest" time="0.001"/>
+  <testcase name="straightFlushTest2" classname="MyTest" time="0"/>
   <testcase name="straightFlushTest3" classname="MyTest" time="0.001"/>
-  <testcase name="testEvalPPWinningsWithNone" classname="MyTest" time="0.001"/>
-  <testcase name="testEvalPPWinningsWithPair" classname="MyTest" time="0"/>
-  <testcase name="testEvalHandThreeOfKind" classname="MyTest" time="0.001"/>
-  <testcase name="testEvalHandNone" classname="MyTest" time="0"/>
+  <testcase name="testDeckContainsCards" classname="MyTest" time="0"/>
+  <testcase name="testReadCard1" classname="MyTest" time="0.001"/>
+  <testcase name="testReadCard2" classname="MyTest" time="0"/>
+  <testcase name="testGetNumberID" classname="MyTest" time="0.001"/>
+  <testcase name="testSetAndGetPPBet" classname="MyTest" time="0"/>
+  <testcase name="testEvalPPWinningsWithNone" classname="MyTest" time="0"/>
+  <testcase name="testEvalPPWinningsWithPair" classname="MyTest" time="0.001"/>
+  <testcase name="testEvalHandThreeOfKind" classname="MyTest" time="0"/>
+  <testcase name="testGetBalance" classname="MyTest" time="0"/>
+  <testcase name="testEvalHandNone" classname="MyTest" time="0.001"/>
   <testcase name="testEvalHandPair" classname="MyTest" time="0.001"/>
-  <testcase name="testEvalHandFlush" classname="MyTest" time="0"/>
-  <testcase name="testCompareHands_Draw" classname="MyTest" time="0"/>
+  <testcase name="testEvalHandFlush" classname="MyTest" time="0.001"/>
+  <testcase name="testCompareHands_Draw" classname="MyTest" time="0.001"/>
   <testcase name="testGetHighCard1" classname="MyTest" time="0"/>
-  <testcase name="testGetHighCard2" classname="MyTest" time="0"/>
+  <testcase name="testGetHighCard2" classname="MyTest" time="0.001"/>
   <testcase name="testGetHighCard3" classname="MyTest" time="0"/>
+  <testcase name="testShuffle1" classname="MyTest" time="0.002"/>
+  <testcase name="testMakeDeck" classname="MyTest" time="0"/>
   <testcase name="testCompareHands_PlayerPairWin" classname="MyTest" time="0"/>
-  <testcase name="testGetPairValue1" classname="MyTest" time="0"/>
+  <testcase name="testGetPairValue1" classname="MyTest" time="0.001"/>
   <testcase name="testGetPairValue2" classname="MyTest" time="0"/>
   <testcase name="testCompareHands_DealerWins" classname="MyTest" time="0"/>
   <testcase name="testEvalHandStrFlush" classname="MyTest" time="0"/>
-  <testcase name="testEvalHandStraight" classname="MyTest" time="0.001"/>
+  <testcase name="testEvalHandStraight" classname="MyTest" time="0"/>
   <testcase name="testEvalPPWinningsWithStraightFlush" classname="MyTest" time="0"/>
-  <testcase name="testEvalPPWinningsWithStraight" classname="MyTest" time="0.001"/>
+  <testcase name="testEvalPPWinningsWithStraight" classname="MyTest" time="0"/>
   <testcase name="testCompareHands_PlayerWins" classname="MyTest" time="0"/>
   <testcase name="straightTest1" classname="MyTest" time="0.001"/>
-  <testcase name="straightTest2" classname="MyTest" time="0.001"/>
+  <testcase name="straightTest2" classname="MyTest" time="0"/>
   <testcase name="straightTest3" classname="MyTest" time="0.001"/>
   <testcase name="straightTest4" classname="MyTest" time="0"/>
+  <testcase name="dealerQualifyTest1" classname="MyTest" time="0"/>
+  <testcase name="dealerQualifyTest2" classname="MyTest" time="0.001"/>
+  <testcase name="testSetAndGetAnteBet" classname="MyTest" time="0"/>
+  <testcase name="updateWinningsTest1" classname="MyTest" time="0.001"/>
+  <testcase name="updateWinningsTest2" classname="MyTest" time="0.001"/>
+  <testcase name="updateWinningsTest3" classname="MyTest" time="0"/>
+  <testcase name="updateWinningsTest4" classname="MyTest" time="0"/>
 </testsuite>

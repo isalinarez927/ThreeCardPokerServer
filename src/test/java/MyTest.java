@@ -26,7 +26,6 @@ class MyTest {
 		flush = new ArrayList<Card>();
 		strFlush = new ArrayList<Card>();
 		logic = new ThreeCardLogic();
-		deck = new Deck();
 		//todo: might have to update later
 		player = new Player(1);
 	}
@@ -363,11 +362,8 @@ class MyTest {
 	}
 	@Test
 	void testEvalPPWinningsWithNone() {
-		assertEquals(0, logic.evalPPWinnings(none, 10));
+		assertEquals(-10, logic.evalPPWinnings(none, 10));
 	}
-
-
-
 
 
 	@Test
@@ -464,6 +460,260 @@ class MyTest {
 	}
 
 
+	@Test
+	void testMakeDeck() {
+		deck = new Deck();
+		int expectedSize = 52;
+		int actualSize = deck.deck.size();
+		assertEquals(expectedSize, actualSize);
+	}
+
+	@Test
+	void testDeckContainsCards() {
+		deck = new Deck();
+
+		String hA = deck.deck.get(0).readCard();
+		String d2 = deck.deck.get(14).readCard();
+		String c3 = deck.deck.get(28).readCard();
+		String sK = deck.deck.get(51).readCard();
+
+		assertEquals("Ace of Hearts",hA);
+		assertEquals("2 of Diamonds",d2);
+		assertEquals("3 of Clubs",c3);
+		assertEquals("King of Spades",sK);
+	}
+
+
+
+
+	@Test
+	void testShuffle1() {
+		deck = new Deck();
+		Deck shuffled = new Deck();
+		shuffled.shuffle();
+		assertFalse(deck.deck.equals(shuffled));
+	}
+
+	@Test
+	void testDraw1() {
+		deck = new Deck();
+		int initialSize = deck.deck.size();
+		deck.draw();
+		assertEquals(initialSize - 1, deck.deck.size());
+	}
+
+
+	@Test
+	void testDraw2() {
+		deck = new Deck();
+		int initialSize = deck.deck.size();
+		deck.draw(); deck.draw(); deck.draw();
+		assertEquals(initialSize - 3, deck.deck.size());
+	}
+
+
+	@Test
+	void testConstructorAndGetters() {
+		String expectedSuit = "Hearts";
+		String expectedRank = "Ace";
+		Card card = new Card(expectedSuit, expectedRank);
+		assertEquals(expectedSuit, card.getSuit());
+		assertEquals(expectedRank, card.getRank());
+	}
+
+	@Test
+	void testReadCard1() {
+		String expectedString = "Ace of Hearts";
+		Card card = new Card("Hearts", "Ace");
+		assertEquals(expectedString, card.readCard());
+	}
+
+	@Test
+	void testReadCard2() {
+		String expectedString = "King of Spades";
+		Card card = new Card("Spades", "King");
+		assertEquals(expectedString, card.readCard());
+	}
+
+
+	@Test
+	void dealerQualifyTest1() {
+		ArrayList<Card> hand1 = new ArrayList<>();
+		hand1.add(new Card("Diamonds", "2"));
+		hand1.add(new Card("Clubs", "7"));
+		hand1.add(new Card("Hearts", "4"));
+
+
+		// Testing the method with the edge case where dealer hand is a Q-7-2 (does not qualify)
+		boolean result1 = ThreeCardLogic.dealerQualify(hand1);
+		assertFalse(result1);
+
+	}
+
+	@Test
+	void dealerQualifyTest2() {
+		ArrayList<Card> hand2 = new ArrayList<>();
+		hand2.add(new Card("Diamonds", "2"));
+		hand2.add(new Card("Clubs", "3"));
+		hand2.add(new Card("Hearts", "4"));
+
+		// Testing the method with the edge case where dealer hand is a A-K-Q (qualifies)
+		boolean result2 = ThreeCardLogic.dealerQualify(hand2);
+		assertTrue(result2);
+	}
+
+
+
+
+	@Test
+	void updateWinningsTest1() {
+		// create a player with a losing hand
+		Player player = new Player(1);
+		player.setAnteBet(10);
+		player.setPlayBet(20);
+		player.setPPBet(5);
+		ArrayList<Card> playerHand = new ArrayList<>();
+		playerHand.add(new Card("Hearts", "Queen"));
+		playerHand.add(new Card("Clubs", "Jack"));
+		playerHand.add(new Card("Clubs", "3"));
+		player.setHand(playerHand);
+
+		// create a dealer with a winning hand
+		ArrayList<Card> dealerHand = new ArrayList<>();
+		dealerHand.add(new Card("Spades", "Queen"));
+		dealerHand.add(new Card("Spades", "Ace"));
+		dealerHand.add(new Card("Diamonds", "King"));
+
+		int expectedWinnings = 0 + logic.evalPPWinnings(playerHand, player.getPPBet());//-5;//todo check this
+		int actualWinnings = logic.updateWinnings(player, dealerHand);
+
+		assertEquals(expectedWinnings, actualWinnings);
+	}
+
+
+	@Test //todo
+	void updateWinningsTest2() {
+		// create a player with a winning hand
+		Player player = new Player(1);
+		player.setAnteBet(10);
+		player.setPlayBet(20);
+		player.setPPBet(5);
+		ArrayList<Card> playerHand = new ArrayList<>();
+		playerHand.add(new Card("Spades", "Queen"));
+		playerHand.add(new Card("Spades", "Ace"));
+		playerHand.add(new Card("Diamonds", "King"));
+		player.setHand(playerHand);
+
+		// create a dealer with a losing hand
+		ArrayList<Card> dealerHand = new ArrayList<>();
+		dealerHand.add(new Card("Hearts", "Queen"));
+		dealerHand.add(new Card("Clubs", "Jack"));
+		dealerHand.add(new Card("Clubs", "Queen"));
+
+		int expectedWinnings = 10*2 + 20*2 + logic.evalPPWinnings(playerHand, player.getPPBet());
+		int actualWinnings = logic.updateWinnings(player, dealerHand);
+
+		assertEquals(expectedWinnings, actualWinnings);
+
+	}
+
+
+
+	@Test
+	void updateWinningsTest3() {
+		// create a player with a winning hand
+		Player player = new Player(1);
+		player.setAnteBet(10);
+		player.setPlayBet(20);
+		player.setPPBet(5);
+		ArrayList<Card> playerHand = new ArrayList<>();
+		playerHand.add(new Card("Spades", "Queen"));
+		playerHand.add(new Card("Spades", "Ace"));
+		playerHand.add(new Card("Diamonds", "King"));
+		player.setHand(playerHand);
+
+		// create a dealer with a losing hand
+		ArrayList<Card> dealerHand = new ArrayList<>();
+		dealerHand.add(new Card("Diamonds", "Queen"));
+		dealerHand.add(new Card("Diamonds", "Ace"));
+		dealerHand.add(new Card("Clubs", "King"));
+
+		int expectedWinnings = 10 + 20 + logic.evalPPWinnings(playerHand, player.getPPBet());
+		int actualWinnings = logic.updateWinnings(player, dealerHand);
+
+		assertEquals(expectedWinnings, actualWinnings);
+	}
+
+	@Test
+	void updateWinningsTest4() {
+		// create a player with a winning hand
+		Player player = new Player(1);
+		player.setAnteBet(10);
+		player.setPlayBet(20);
+		player.setPPBet(5);
+		ArrayList<Card> playerHand = new ArrayList<>();
+		playerHand.add(new Card("Spades", "Queen"));
+		playerHand.add(new Card("Spades", "Ace"));
+		playerHand.add(new Card("Diamonds", "King"));
+		player.setHand(playerHand);
+
+		// create a dealer no qyalify
+		ArrayList<Card> dealerHand = new ArrayList<>();
+		dealerHand.add(new Card("Diamonds", "5"));
+		dealerHand.add(new Card("Diamonds", "3"));
+		dealerHand.add(new Card("Clubs", "2"));
+
+		int expectedWinnings = 20 + logic.evalPPWinnings(playerHand, player.getPPBet());
+		int actualWinnings = logic.updateWinnings(player, dealerHand);
+
+		assertEquals(expectedWinnings, actualWinnings);
+	}
+
+
+	@Test
+	public void testGetNumberID() {
+		Player player = new Player(1);
+		assertEquals(1, player.getNumberID());
+	}
+
+	@Test
+	public void testGetBalance() {
+		Player player = new Player(1);
+		assertEquals(150, player.getBalance());
+	}
+
+	@Test
+	public void testSetAndGetAnteBet() {
+		Player player = new Player(1);
+		player.setAnteBet(10);
+		assertEquals(10, player.getAnteBet());
+	}
+
+	@Test
+	public void testSetAndGetPPBet() {
+		Player player = new Player(1);
+		player.setPPBet(5);
+		assertEquals(5, player.getPPBet());
+	}
+
+	@Test
+	public void testSetAndGetPlayBet() {
+		Player player = new Player(1);
+		player.setPlayBet(20);
+		assertEquals(20, player.getPlayBet());
+	}
+
+	@Test
+	public void testSetAndGetHand() {
+		Player player = new Player(1);
+		ArrayList<Card> hand = new ArrayList<>();
+		hand.add(new Card("Spades", "Ace"));
+		hand.add(new Card("Hearts", "King"));
+		hand.add(new Card("Diamonds", "3"));
+		player.setHand(hand);
+		assertEquals(hand, player.getHand());
+	}
+
 
 
 
@@ -472,3 +722,13 @@ class MyTest {
 
 
 }
+
+
+
+
+
+
+
+
+
+

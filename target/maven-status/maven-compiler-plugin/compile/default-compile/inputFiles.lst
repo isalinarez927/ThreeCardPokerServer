@@ -1,6 +1,8 @@
-/Users/isabellalinarez/Desktop/ThreeCardPokerServer/src/main/java/DeckOfCards.java
+/Users/isabellalinarez/Desktop/ThreeCardPokerServer/src/main/java/CommunicationHandler.java
+/Users/isabellalinarez/Desktop/ThreeCardPokerServer/src/main/java/Player.java
+/Users/isabellalinarez/Desktop/ThreeCardPokerServer/src/main/java/Game.java
+/Users/isabellalinarez/Desktop/ThreeCardPokerServer/src/main/java/Deck.java
 /Users/isabellalinarez/Desktop/ThreeCardPokerServer/src/main/java/ThreeCardLogic.java
 /Users/isabellalinarez/Desktop/ThreeCardPokerServer/src/main/java/Card.java
 /Users/isabellalinarez/Desktop/ThreeCardPokerServer/src/main/java/Server.java
-/Users/isabellalinarez/Desktop/ThreeCardPokerServer/src/main/java/GuiServer.java
-/Users/isabellalinarez/Desktop/ThreeCardPokerServer/src/main/java/Client.java
+/Users/isabellalinarez/Desktop/ThreeCardPokerServer/src/main/java/PokerInfo.java

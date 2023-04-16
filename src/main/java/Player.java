@@ -10,6 +10,8 @@ public class Player {
     public Integer ppBet;
     public Integer playBet;
 
+    //todo: test all
+
 
     public Player(Integer id){
         this.balance = 150;
@@ -29,4 +31,31 @@ public class Player {
 
     //getter method for Balance
     public Integer getBalance(){ return balance; }
+
+
+    public int getAnteBet()
+    {
+        return anteBet;
+    }
+    public void setAnteBet(int ante)
+    {
+        this.anteBet = ante;
+    }
+    public int getPPBet()
+    {
+        return ppBet;
+    }
+    public void setPPBet(int pp)
+    {
+        this.ppBet = pp;
+    }
+    public int getPlayBet()
+    {
+        return playBet;
+    }
+    public void setPlayBet(int play)
+    {
+        this.playBet = play;
+    }
+
 }

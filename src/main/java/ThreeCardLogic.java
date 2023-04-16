@@ -162,33 +162,32 @@ public class ThreeCardLogic {
 
 
     //evaluates if dealer qualifies with a queen high card
+    //todo: test
     public static boolean dealerQualify (ArrayList<Card> dealerHand)
     {
-        for (int i = 0; i < 3; i++)
-        {
-            // sees if the dealer has
-            if (cardRankVals.get(dealerHand.get(i)) >= 12)
-            {
-                return true;
-            }
-        }
-        return false;
+        if(evalHand(dealerHand) < 12){return false;}
+        return true;
     }
 
 
+    //todo: test and write desc
     public static int updateWinnings(Player player, ArrayList<Card> dealerHand){
-        int ante = player.anteBet;
-        int play = player.playBet;
-        int pp = player.ppBet;
+        int ante = player.getAnteBet();
+        int play = player.getPlayBet();
+        int pp = player.getPPBet();
         int winnings = 0;
         if (dealerQualify(dealerHand)){
-            // need to multiply twice to get back up to original balance + profit
+            // need to multiply twice to get back up to original balance + profit (player wins)
             if (compareHands(dealerHand, player.getHand()) == 1){ winnings = ante*2 + play*2; }
-            // add to get back to original balance
-            else if (compareHands(dealerHand, player.getHand()) == 3) { winnings = ante + play;}
+            // add to get back to original balance (draw)
+            else if (compareHands(dealerHand, player.getHand()) == 2) { winnings = ante + play;}
         }
+        //player gets profit from ante amount
         else { winnings = ante * 2; }
         return winnings + evalPPWinnings(player.hand, pp);
     }
+
+
+
 
 }

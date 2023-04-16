@@ -13,7 +13,6 @@ public class Game {
     public Game(){
         logic = new ThreeCardLogic();
         deck = new Deck();
-        deck.MakeDeck();
         dealerHand = new ArrayList<>();
         deal(dealerHand);
         players = new ArrayList<>();
@@ -23,12 +22,6 @@ public class Game {
     public void addPlayer(Player player) {
         players.add(player);
     }
-
-    public boolean dealerQualify(){
-        return (logic.evalHand(dealerHand) > 11);
-
-    }
-
 
     //deals three cards and assigns to player
     public void deal(Player player) {
