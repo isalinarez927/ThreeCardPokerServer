@@ -8,6 +8,7 @@ import java.util.function.Consumer;
 
 import javafx.application.Platform;
 import javafx.scene.control.ListView;
+
 /*
  * Clicker: A: I really get it    B: No idea what you are talking about
  * C: kind of following

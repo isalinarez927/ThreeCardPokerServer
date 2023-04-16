@@ -10,6 +10,8 @@ public class Player {
     public Integer ppBet;
     public Integer playBet;
 
+    public boolean folded;
+
     //todo: test all
 
 
